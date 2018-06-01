@@ -1,0 +1,43 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react-app": "^3.0.0",
+    "jest-expo": "~27.0.0",
+    "prettier": "^1.12.1",
+    "react-native-scripts": "1.14.0",
+    "react-test-renderer": "16.3.1"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "expo": "^27.0.1",
+    "react": "16.3.1",
+    "react-native": "~0.55.2",
+    "react-navigation": "^2.0.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:react-app/recommended"
+    ],
+    "rules": {
+      "react-app/jsx-a11y/href-no-hash": "off"
+    }
+  }
+}
