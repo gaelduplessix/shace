@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, CameraRoll, SafeAreaView, Image } from 'react-native';
+import { CameraRoll, SafeAreaView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+
+import logo from './logo.png';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -30,13 +32,19 @@ class HomeScreen extends React.Component {
   state = {};
 
   render() {
-    console.log('RENDER', this.state.img);
     return (
-      <SafeAreaView>
-        <Text>Hello world!</Text>
-        {this.state.img && (
+      <SafeAreaView
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <Image source={logo} style={{ width: '80%' }} resizeMode="contain" />
+        {/* {this.state.img && (
           <Image source={this.state.img} style={{ width: 100, height: 100 }} />
-        )}
+        )} */}
       </SafeAreaView>
     );
   }
@@ -46,25 +54,22 @@ export default createStackNavigator({
   Home: HomeScreen,
 });
 
-function backupPhoto(photo) {
+async function backupPhoto(photo) {
   console.log(photo);
-  // const body = new FormData();
-  // body.append('photo', {
-  //   uri: photo.image.uri,
-  //   filename: photo.image.filename,
-  //   type: 'image/jpeg',
-  // });
-  // body.append('Content-Type', 'image/jpeg');
+  const body = new FormData();
+  body.append('upload', {
+    uri: photo.image.uri,
+    type: photo.type,
+    name: photo.image.filename,
+  });
+  body.append('Content-Type', 'image/jpeg');
 
-  // fetch('http://localhost:4242', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //   },
-  //   body,
-  // })
-  //   .then(res => {
-  //     console.log('response', res);
-  //   })
-  //   .catch(e => console.error('Upload error!', e));
+  const res = await fetch('http://localhost:8000/upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    body,
+  });
+  console.log('upload done!', res, await res.text());
 }

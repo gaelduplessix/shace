@@ -1,0 +1,43 @@
+{
+  "name": "uploads",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "no-extra-boolean-cast": 0
+    }
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "prettier": "^1.13.4"
+  }
+}
